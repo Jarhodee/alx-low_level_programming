@@ -1,2 +1,2 @@
-echo '#!/bin/bash'
-echo ‘gcc -E $CFILE -o c’
+#!/bin/bash
+‘gcc -E 0-main.c -o c’
