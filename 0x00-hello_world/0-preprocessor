@@ -1,0 +1,2 @@
+echo '#!/bin/bash'
+echo ‘gcc -E $CFILE -o c’
