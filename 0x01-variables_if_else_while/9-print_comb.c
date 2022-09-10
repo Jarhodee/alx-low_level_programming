@@ -2,22 +2,22 @@
 #include <unistd.h>
 /**
  * main - Entry point
- * Description: Print base 16 numbers
+ * Description: prints numbers
  * Return: Always 0 (success)
  */
 int main(void)
 {
-	char c;
-	char d = '0';
+	int i;
 
-	while (d <= '9')
+	for (i = '0'; i <= '9' ; i++)
 	{
-		putchar(d);
-		d++;
-	}
-	for (c = 'a'; c <= 'f'; c++)
-	{
-		putchar(c);
+		putchar(i);
+
+		if (i != '9')
+		{
+			putchar(',');
+			putchar(' ');
+		}
 	}
 	putchar('\n');
 	return (0);
