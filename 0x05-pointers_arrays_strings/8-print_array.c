@@ -3,10 +3,13 @@
 
 /*
  * print_array - a function that prints n elements of an array
- * @a: array name
- * @n: is the number of elements OF the array to be printed
- * Return: a and n inputs
+ * @a: int type array pointer
+ * @n: int type integer
+ * Description: Numbers must be separated by comma and space.
+ * Numbers should be displayed in the same order they are stored in array.
+ * You can only use _putchar to print.
  */
+
 void print_array(int *a, int n)
 {
 	int i;
