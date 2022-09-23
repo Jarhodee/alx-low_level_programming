@@ -7,13 +7,16 @@
  * Return: the point to dest
  */
 
-char *string_toupper(char *s)
+char *string_toupper(char *c)
 {
-	int count = 0;
-while (*(s + count) != '\0')
+	int i;
+
+	for (i = 0; c[i] != '\0'; i++)
 	{
-		if ((*(s + count) >= 97) && (*(s + count) <= 122))
-			*(s + count) = *(s + count) - 32;
-		                count++;
+		if (c[i] > 96 && c[i] < 123)
+		{
+			c[i] -= 32;
+		}
 	}
+	return (c);
 }
