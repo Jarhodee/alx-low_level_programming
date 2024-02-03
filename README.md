@@ -24,6 +24,6 @@ In this repository, I learnt how to write Bash scripts.
 + C - Singly Linked Lists
 + C - Sorting Algorithms
 
-+ I successfully Ran Betty Checks On All Repositories 
+ # I successfully Ran Betty Checks On All Repositories 
 
 
