@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * binary_to_uint - converst a binary number to an unsigned int
  * @b: a string of 0 and 1 chars
@@ -9,33 +8,33 @@
  */
 unsigned int binary_to_uint(const char *b)
 {
-	
+	/*create variable to store return deci. value, and exp var*/
 	unsigned int converted = 0, exp = 0;
-	
-	int len_th = 0, i;
+	/*create a variable to get leng_th of binary string & counter*/
+	int leng_th = 0, i;
 
-	
+	/*edge cases: NULL, "", 0*/
 	if (b == NULL || *b == '\0')
 		return (0);
 
-	
-	for (; b[len_th] != '\0'; len_th++)
+	/*get the leng_th of b and check for characters other than 0 and 1*/
+	for (; b[leng_th] != '\0'; leng_th++)
 	{
-		if (b[len_th] != '0' && b[len_th] != '1')
+		if (b[leng_th] != '0' && b[leng_th] != '1')
 			return (0);
 	}
 
-	
-	for (i = len_th - 1; i >= 0; i--)
+	/*convert the valid binary numbers to unsigned int starting frm right*/
+	for (i = leng_th - 1; i >= 0; i--)
 	{
 		if (b[i] == '0')
-		
+		{/*if value is 0, skip and increase exponent & mv to next*/
 			exp++;
 			continue;
 		}
 		if (b[i] == '1')
-		{
-			converted += 1 << exp;
+		{/*if val is 1,get the exp val(calc contrbtn)&add 2 conv. var*/
+			converted += 1 << exp;/*cal,d left shift equiv of exp*/
 			exp++;
 		}
 	}
