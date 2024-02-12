@@ -1,56 +1,26 @@
 #include "main.h"
-#include <stdlib.h>
-
 /**
- * main - Entry point
- * @argc: count
- * @argv: string
- *
- * Return: Success
+ * append_text_to_file - a function that appends text at end of a file
+ * @filename: name of file
+ * @text_content: text to add at end of a file
+ * Return: 1 success -1 failure
  */
-
-int main(int argc, char *argv[])
+int append_text_to_file(const char *filename, char *text_content)
 {
-	const char *file_from = argv[1], *file_to = argv[2];
-	int fd_to, fd_from;
-	ssize_t bytesRead, bytesWrite;
-	char buffer[1024];
+	int ftx, bytes_written;
 
-	if (argc != 3)
+	ftx = open(filename, O_WRONLY | O_APPEND);
+	if (ftx == -1 || filename == NULL)
+		return (-1);
+	if (text_content != NULL)
 	{
-		fprintf(stderr, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
-	fd_from = open(file_from, O_RDONLY);
-	if (fd_from == -1)
-	{
-		fprintf(stderr, "Error: Can't read from file %s\n", file_from);
-		exit(98);
-	}
-	fd_to = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (fd_to == -1)
-	{
-		fprintf(stderr, "Error: Can't write to %s\n", file_to);
-		exit(99);
-	}
-	while ((bytesRead = read(fd_from, buffer, sizeof(buffer))) > 0)
-	{
-		bytesWrite = write(fd_to, buffer, bytesRead);
-		if (bytesWrite == -1)
+		bytes_written = write(ftx, text_content, strlen(text_content));
+		if (bytes_written == -1)
 		{
-			fprintf(stderr, "Error: Can't write to %s\n", file_to);
-			exit(99);
+			close(ftx);
+			return (-1);
 		}
 	}
-	if (bytesRead == -1)
-	{
-		fprintf(stderr, "Error: Can't read from file %s\n", file_from);
-		exit(98);
-	}
-	if (close(fd_from) == -1 || close(fd_to) == -1)
-	{
-		fprintf(stderr, "Error: Can't close fd %d\n", fd_to);
-		exit(100);
-	}
-	return (0);
+	close(ftx);
+	return (1);
 }
